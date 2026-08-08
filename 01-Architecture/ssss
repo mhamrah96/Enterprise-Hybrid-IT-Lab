@@ -1,0 +1,159 @@
+# Infrastructure Plan
+
+## Overview
+
+This document defines the planned infrastructure for the Enterprise Hybrid IT Lab. The environment will simulate a small enterprise with on-premises Windows Server infrastructure integrated with Microsoft Entra ID, Microsoft 365, Intune, PowerShell, and ServiceNow.
+
+## Virtualization Platform
+
+**Hypervisor:** VirtualBox
+
+**Environment:** Hybrid on-premises and cloud
+
+## Planned Infrastructure
+
+| System | Operating System | Primary Role |
+|---|---|---|
+| DC01 | Windows Server 2019/2022 | Active Directory Domain Services + DNS |
+| SRV01 | Windows Server 2019/2022 | DHCP + File Server |
+| WIN11-01 | Windows 11 | Employee Workstation |
+| WIN11-02 | Windows 11 | Employee Workstation |
+
+## DC01 — Domain Controller
+
+DC01 will serve as the primary domain controller for the environment.
+
+### Responsibilities
+
+- Active Directory Domain Services (AD DS)
+- DNS
+- Domain authentication
+- User and computer account management
+- Organizational Units
+- Security Groups
+- Group Policy
+
+## SRV01 — Server
+
+SRV01 will provide network and file services.
+
+### Responsibilities
+
+- DHCP
+- Department file shares
+- NTFS permissions
+- Shared network resources
+
+## Windows Workstations
+
+### WIN11-01
+
+- Windows 11
+- Domain-joined employee workstation
+- Managed through Group Policy
+- Later managed through Microsoft Intune
+
+### WIN11-02
+
+- Windows 11
+- Domain-joined employee workstation
+- Used to test policies, permissions, and troubleshooting scenarios
+- Later managed through Microsoft Intune
+
+## Microsoft Entra ID
+
+Microsoft Entra ID will provide cloud identity and access management.
+
+### Planned Uses
+
+- Cloud user management
+- Cloud groups
+- Authentication
+- Role-Based Access Control (RBAC)
+- Hybrid identity
+
+## Microsoft 365
+
+Microsoft 365 will provide cloud productivity and collaboration services.
+
+### Planned Services
+
+- Exchange Online
+- Microsoft Teams
+- SharePoint
+- OneDrive
+- Microsoft 365 licensing
+
+## Microsoft Intune
+
+Intune will provide endpoint management for Windows devices.
+
+### Planned Uses
+
+- Windows device enrollment
+- Configuration profiles
+- Compliance policies
+- Endpoint security policies
+- Device inventory
+- Application deployment
+
+## PowerShell
+
+PowerShell will be used to automate and administer the environment.
+
+### Planned Uses
+
+- Active Directory administration
+- User creation
+- User modification
+- User offboarding
+- Group management
+- Reporting
+- Troubleshooting
+- Administrative automation
+
+## ServiceNow
+
+ServiceNow will provide IT service management capabilities.
+
+### Planned Uses
+
+- Incident management
+- Service requests
+- User onboarding
+- User offboarding
+- Assignment groups
+- Ticket documentation
+- IT service management workflows
+
+## Planned Virtual Machine Resources
+
+| VM | CPU | RAM | Storage |
+|---|---|---|---|
+| DC01 | 2 vCPU | 4 GB | 60 GB |
+| SRV01 | 2 vCPU | 4 GB | 60 GB |
+| WIN11-01 | 2 vCPU | 6 GB | 64 GB |
+| WIN11-02 | 2 vCPU | 6 GB | 64 GB |
+
+These resource allocations are initial estimates and may be adjusted based on available host hardware.
+
+## Infrastructure Dependencies
+
+The infrastructure will be built in the following general order:
+
+1. Windows Server infrastructure
+2. Active Directory and DNS
+3. DHCP and file services
+4. Windows client deployment
+5. Group Policy
+6. PowerShell automation
+7. Microsoft Entra ID
+8. Hybrid identity
+9. Microsoft 365
+10. Microsoft Intune
+11. ServiceNow
+12. Enterprise troubleshooting scenarios
+
+## Project Goal
+
+The infrastructure will provide a realistic enterprise environment for practicing Windows Server administration, identity management, endpoint management, cloud integration, PowerShell automation, troubleshooting, security controls, and IT service management.

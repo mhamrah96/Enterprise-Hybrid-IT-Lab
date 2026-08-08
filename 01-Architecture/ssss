@@ -1,120 +1,124 @@
 # Day 1 — Enterprise Architecture & Planning
 
-## Overview
+## Project Overview
 
-This document defines the planned infrastructure for the Enterprise Hybrid IT Lab. The environment will simulate a small enterprise with on-premises Windows Server infrastructure integrated with Microsoft Entra ID, Microsoft 365, Intune, PowerShell, and ServiceNow.
+This project simulates the design, deployment, administration, and support of a small enterprise IT environment. The environment integrates on-premises Active Directory with Microsoft Entra ID, Microsoft 365, Intune, PowerShell, Windows Server, and ServiceNow.
 
-## Virtualization Platform
+## Organization
 
-**Hypervisor:** VirtualBox
-
+**Company:** Contoso Enterprise
+**Employees:** Approximately 75
 **Environment:** Hybrid on-premises and cloud
+
+### Departments
+
+* IT
+* Human Resources
+* Finance
+* Sales
+* Marketing
+* Operations
+* Management
 
 ## Planned Infrastructure
 
-| System | Operating System | Primary Role |
-|---|---|---|
-| DC01 | Windows Server 2019/2022 | Active Directory Domain Services + DNS |
-| SRV01 | Windows Server 2019/2022 | DHCP + File Server |
-| WIN11-01 | Windows 11 | Employee Workstation |
-| WIN11-02 | Windows 11 | Employee Workstation |
+| System   | Role                                   | Operating System |
+| -------- | -------------------------------------- | ---------------- |
+| DC01     | Active Directory Domain Services + DNS | Windows Server   |
+| SRV01    | File Server + DHCP                     | Windows Server   |
+| WIN11-01 | Employee Workstation                   | Windows 11       |
+| WIN11-02 | Employee Workstation                   | Windows 11       |
 
-## DC01 — Domain Controller
+## Network Plan
 
-DC01 will serve as the primary domain controller for the environment.
+**Network:** 192.168.10.0/24
+**Gateway:** 192.168.10.1
+**DC01:** 192.168.10.10
+**SRV01:** 192.168.10.20
+**DHCP Range:** 192.168.10.100–192.168.10.200
 
-### Responsibilities
+## Active Directory
 
-- Active Directory Domain Services (AD DS)
-- DNS
-- Domain authentication
-- User and computer account management
-- Organizational Units
-- Security Groups
-- Group Policy
+**Domain:** corp.contoso.local
 
-## SRV01 — Server
+### Organizational Units
 
-SRV01 will provide network and file services.
+```text
+corp.contoso.local
+│
+├── Users
+│   ├── IT
+│   ├── HR
+│   ├── Finance
+│   ├── Sales
+│   ├── Marketing
+│   ├── Operations
+│   └── Management
+│
+├── Computers
+│   ├── Workstations
+│   └── Laptops
+│
+├── Servers
+│
+└── Groups
+```
 
-### Responsibilities
+## Security Groups
 
-- DHCP
-- Department file shares
-- NTFS permissions
-- Shared network resources
+* GG-IT
+* GG-HR
+* GG-Finance
+* GG-Sales
+* GG-Marketing
+* GG-Operations
+* GG-Management
 
-## Windows Workstations
+## Naming Conventions
 
-### WIN11-01
+### Users
 
-- Windows 11
-- Domain-joined employee workstation
-- Managed through Group Policy
-- Later managed through Microsoft Intune
+`firstname.lastname`
 
-### WIN11-02
+Example:
 
-- Windows 11
-- Domain-joined employee workstation
-- Used to test policies, permissions, and troubleshooting scenarios
-- Later managed through Microsoft Intune
+`john.smith`
 
-## Microsoft Entra ID
+### Computers
 
-Microsoft Entra ID will provide cloud identity and access management.
+`WIN11-01`
+`WIN11-02`
 
-### Planned Uses
+### Servers
 
-- Cloud user management
-- Cloud groups
-- Authentication
-- Role-Based Access Control (RBAC)
-- Hybrid identity
+`DC01`
+`SRV01`
 
-## Microsoft 365
+### Security Groups
 
-Microsoft 365 will provide cloud productivity and collaboration services.
+`GG-Department`
 
-### Planned Services
+Example:
 
-- Exchange Online
-- Microsoft Teams
-- SharePoint
-- OneDrive
-- Microsoft 365 licensing
+`GG-IT`
 
-## Microsoft Intune
+## Planned Technologies
 
-Intune will provide endpoint management for Windows devices.
+* Windows Server
+* Active Directory
+* DNS
+* DHCP
+* Group Policy
+* PowerShell
+* Microsoft Entra ID
+* Microsoft 365
+* Microsoft Intune
+* ServiceNow
 
-### Planned Uses
+## Project Goal
 
-- Windows device enrollment
-- Configuration profiles
-- Compliance policies
-- Endpoint security policies
-- Device inventory
-- Application deployment
+The goal is to build and document a realistic enterprise IT environment that demonstrates identity management, endpoint administration, automation, troubleshooting, security controls, user lifecycle management, and IT service management.
 
-## PowerShell
-
-PowerShell will be used to automate and administer the environment.
-
-### Planned Uses
-
-- Active Directory administration
-- User creation
-- User modification
-- User offboarding
-- Group management
-- Reporting
-- Troubleshooting
-- Administrative automation
-
-## ServiceNow
-
-ServiceNow will provide IT service management capabilities.
 
 ### Planned Uses
 

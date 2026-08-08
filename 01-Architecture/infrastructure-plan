@@ -1,0 +1,99 @@
+# Infrastructure Plan
+
+## Overview
+
+This document outlines the planned infrastructure for the Enterprise Hybrid IT Lab. The environment is designed to simulate a small enterprise using on-premises and cloud-based technologies.
+
+## Virtualization Platform
+
+**Hypervisor:** VirtualBox
+
+## Servers
+
+| Hostname | Operating System    | Role                                          |
+| -------- | ------------------- | --------------------------------------------- |
+| DC01     | Windows Server 2019 | Active Directory Domain Services (AD DS), DNS |
+| SRV01    | Windows Server 2019 | DHCP, File Server                             |
+
+## Workstations
+
+| Hostname | Operating System | Purpose              |
+| -------- | ---------------- | -------------------- |
+| WIN11-01 | Windows 11 Pro   | Employee Workstation |
+| WIN11-02 | Windows 11 Pro   | Employee Workstation |
+
+## Server Roles
+
+### DC01
+
+* Active Directory Domain Services (AD DS)
+* DNS Server
+* Domain Controller
+* User Authentication
+* Group Policy Management
+
+### SRV01
+
+* DHCP Server
+* File Server
+* Department File Shares
+* NTFS Permissions Management
+
+## Cloud Services
+
+### Microsoft Entra ID
+
+* Cloud Identity Management
+* Authentication Services
+* Group Management
+* Role-Based Access Control (RBAC)
+
+### Microsoft 365
+
+* Exchange Online
+* Microsoft Teams
+* SharePoint Online
+* OneDrive
+* License Management
+
+### Microsoft Intune
+
+* Device Enrollment
+* Endpoint Management
+* Compliance Policies
+* Configuration Profiles
+* Security Policies
+
+### ServiceNow
+
+* Incident Management
+* Request Management
+* User Onboarding
+* User Offboarding
+* IT Service Management (ITSM)
+
+## Planned VM Resources
+
+| System   | CPU    | RAM  | Storage |
+| -------- | ------ | ---- | ------- |
+| DC01     | 2 vCPU | 4 GB | 60 GB   |
+| SRV01    | 2 vCPU | 4 GB | 60 GB   |
+| WIN11-01 | 2 vCPU | 6 GB | 64 GB   |
+| WIN11-02 | 2 vCPU | 6 GB | 64 GB   |
+
+## Infrastructure Dependencies
+
+Active Directory provides centralized identity management for users and devices. Microsoft Entra ID synchronizes identities from the on-premises Active Directory environment. Microsoft 365 and Intune rely on Entra ID for authentication and device management. ServiceNow is used to manage incidents, requests, and user lifecycle processes throughout the environment.
+
+## Planned Technologies
+
+* Windows Server 2019
+* Active Directory
+* DNS
+* DHCP
+* Group Policy
+* PowerShell
+* Microsoft Entra ID
+* Microsoft 365
+* Microsoft Intune
+* ServiceNow

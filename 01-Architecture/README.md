@@ -1,4 +1,4 @@
-# Day 1 — Enterprise Architecture & Planning
+# Enterprise Architecture & Planning
 
 ## Project Overview
 
